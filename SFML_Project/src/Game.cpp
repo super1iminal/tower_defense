@@ -93,7 +93,7 @@ void Game::setUpEnemyPositions(vector<Vector2i> vec){
             int random_num_y = dist(gen);
 
 
-            monsters.push_back(new Monster((pos.x * 50), (pos.y * 50), path));
+            monsters.push_back(new Monster({(pos.x * 50), (pos.y * 50)}, path));
             //cout << "\nMonster created"; // Spawn monsters at enemy positions
         }
     } else {
@@ -110,23 +110,23 @@ void Game::generateRandomObstacles() {
     // Loop through the tower tiles and randomly decide to place a tree
     for (int i = 0; i < gridHeight; i++) {
         vector<TreeTile *> treeRow;
-        vector<BushTile *> bushRow;
+        vector<RockTile *> bushRow;
         vector<StumpTile *> stumpRow;
 
         for (int j = 0; j < gridWidth; j++) {
             // Place a tree on the tile with a 20% chance
             if (rand() % 10 == 0) {  // Adjust the 5 for more or fewer trees
-                treeRow.push_back(new TreeTile(j * 50, i * 50));
+                treeRow.push_back(new TreeTile({j * 50, i * 50}));
             }else {
                 treeRow.push_back(nullptr);  // No tree at this position
             }
             if (rand() % 30 == 0) {  // Adjust the 5 for more or fewer trees
-                bushRow.push_back(new BushTile(j * 50, i * 50));
+                bushRow.push_back(new RockTile({j * 50, i * 50}));
             }else {
                 bushRow.push_back(nullptr);  // No tree at this position
             }
             if (rand() % 20 == 0) {  // Adjust the 5 for more or fewer trees
-                stumpRow.push_back(new StumpTile(j * 50, i * 50));
+                stumpRow.push_back(new StumpTile({j * 50, i * 50}));
             }else {
                 stumpRow.push_back(nullptr);  // No tree at this position
             }
@@ -206,7 +206,7 @@ void Game::setUpTiles(int x, int y){
     for(int i = 0; i < x; i++){
         vector<GameTile*> generateMap;
         for(int j = 0; j < y; j++){
-            generateMap.push_back(new TowerTile(j*50,i*50));
+            generateMap.push_back(new TowerTile({j*50,i*50}));
         }
         tiles.push_back(generateMap);
     }
@@ -238,7 +238,7 @@ void Game::addStartPoint(Game& Game, float windowWidth, float windowHeight, vect
         if (Game.tiles[row][col] != nullptr) {
             delete Game.tiles[row][col];  // Free memory
         }
-        Game.tiles[row][col] = new PathTile(col * 50, row * 50);
+        Game.tiles[row][col] = new PathTile({col * 50, row * 50});
     }
 }
 
@@ -277,7 +277,7 @@ void Game::addIntermediatePoints(Game& Game, vector<Vector2i>& path, Vector2i ne
             delete Game.bushes[row][col];  // Free memory
             Game.bushes[row][col] = nullptr;  // Set the pointer to nullptr
         }
-        Game.tiles[row][col] = new PathTile(col * 50, row * 50);
+        Game.tiles[row][col] = new PathTile({col * 50, row * 50});
     }
     }
 }
@@ -305,6 +305,6 @@ void Game::addEndPoint(Game &Game, float windowWidth, float windowHeight, vector
             delete Game.bushes[row][col];  // Free memory
             Game.bushes[row][col] = nullptr;  // Set the pointer to nullptr
         }
-        Game.tiles[row][col] = new PathTile(col * 50, row * 50);
+        Game.tiles[row][col] = new PathTile({col * 50, row * 50});
     }
 }

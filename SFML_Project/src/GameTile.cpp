@@ -2,24 +2,19 @@
 using namespace sf;
 using namespace std;
 
-GameTile::GameTile(string textureName, float x, float y){
-    if(!setUpSprite(textureName)){
-        return;
-    }
-    pos = Vector2f(x,y);
-    sprite.setPosition(pos);
+GameTile::GameTile(string textureName, Vector2f pos) 
+    : Entity(textureName, pos, {1.f, 1.f}, IntRect(0, 0, 50, 50)) {
 }
+// if(!texture.loadFromFile(textureName)){
+//     return false;
+// }
+// texture.setSmooth(true);
+// //sprite.setColor(sf::Color(255, 255, 255, 255));  // Full opacity
+// sprite.setTexture(texture);
+// sprite.setScale(0.06f, 0.06f);
+// sprite.setTextureRect(IntRect(0, 0, texture.getSize().x, texture.getSize().y));
+// return true;
 
-bool GameTile::setUpSprite(string textureName){
-    if(!texture.loadFromFile(textureName)){
-        return false;
-    }
-    texture.setSmooth(true);
-    sprite.setTexture(texture);
-    sprite.setScale(1.f,1.f);
-    sprite.setTextureRect(IntRect(0,0,50,50));
-    return true;
-}
 /*
 void GameTile::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(sprite, states);

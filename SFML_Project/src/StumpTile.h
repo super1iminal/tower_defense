@@ -12,7 +12,7 @@ const string STUMP_TILE = "images/stump16x16.png";
 class StumpTile : public GameTile {
 public:
     bool isPassable;
-    StumpTile(float x,float y);
+    StumpTile(Vector2f pos);
 };
 
 #endif

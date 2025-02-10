@@ -3,5 +3,5 @@ using namespace sf;
 using namespace std;
 
 
-StumpTile::StumpTile(float x, float y)
-    : GameTile(STUMP_TILE, x, y){}
+StumpTile::StumpTile(Vector2f pos)
+    : GameTile(STUMP_TILE, pos){}

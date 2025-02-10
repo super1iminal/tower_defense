@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 #ifndef ENEMY_H
-#define ENEMY
+#define ENEMY_H
 
 using namespace sf;
 using namespace std;

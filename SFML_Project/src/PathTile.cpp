@@ -2,6 +2,6 @@
 using namespace sf;
 using namespace std;
 
-PathTile::PathTile(float x, float y)
-    :  GameTile("images/map copy.png", x, y) {}
+PathTile::PathTile(Vector2f pos)
+    :  GameTile(PATH_TILE, pos) {}
 

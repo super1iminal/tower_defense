@@ -12,7 +12,7 @@ const string TOWER_TILE = "images/map.png";
 class TowerTile : public GameTile{
 public:
     bool isPassable = false;
-    TowerTile(float x, float y);
+    TowerTile(Vector2f pos);
 };
 
 #endif

@@ -5,13 +5,9 @@
 using namespace sf;
 using namespace std;
 
-Monster::Monster(float x, float y, vector<sf::Vector2i>& path) {
-    if(!setUpSprite("images/frame-1.png")){
-            cout << "Failed to load sprite.";
-        return;
-    }
-    pos = Vector2f(x,y);
-    sprite.setPosition(pos);
+Monster::Monster(Vector2f pos, vector<sf::Vector2i>& path) 
+    : Entity(MONSTER_TEXTURE, pos, {0.06f, 0.06f}) {
+
     if (!path.empty()) {
         this->path = path;
         //pos = Vector2f(startPoint.x, startPoint.y);  // Set to the first pos in the path
@@ -25,18 +21,6 @@ Monster::Monster(float x, float y, vector<sf::Vector2i>& path) {
     lastFrameTime = 0.0f;  // Keeps track of time for frame switching
     currentFrame = 0;  // 0 for first frame, 1 for second frame
 
-}
-
-bool Monster::setUpSprite(string textureName){
-    if(!texture.loadFromFile(textureName)){
-        return false;
-    }
-    texture.setSmooth(true);
-    //sprite.setColor(sf::Color(255, 255, 255, 255));  // Full opacity
-    sprite.setTexture(texture);
-    sprite.setScale(0.06f, 0.06f);
-    sprite.setTextureRect(IntRect(0, 0, texture.getSize().x, texture.getSize().y));
-    return true;
 }
 
 bool isTrue = true;
@@ -83,7 +67,7 @@ void Monster::moveToNextPoint(float deltaTime) {
             lastFrameTime = 0.0f;
             currentFrame = (currentFrame + 1) % 2;  // Toggle between 0 and 1 for two frames
             string texture = (currentFrame == 0) ? "images/frame-2.png" : "images/frame-1.png";  // Toggle textures
-            setUpSprite(texture);  // Update sprite texture
+            setUpSprite(texture, {0.06f, 0.06f});  // Update sprite texture
         }
 
         //sprite.setPosition(pos.x, bobbedYPosition);  // Update sprite position

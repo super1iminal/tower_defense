@@ -4,7 +4,7 @@
 #include "TowerTile.h"
 #include "TreeTile.h"
 #include "StumpTile.h"
-#include "BushTile.h"
+#include "RockTile.h"
 #include "Monster.h"
 #include <vector>
 
@@ -37,8 +37,11 @@ class Game {
     vector<Monster*> monsters;
     vector<vector<GameTile*>> tiles;
     vector<vector<TreeTile*>> trees;
-    vector<vector<BushTile*>> bushes;
+    vector<vector<RockTile*>> bushes;
     vector<vector<StumpTile*>> stumps;
+    // since it's passed by reference, any changes to entities will affect all these lists
+    vector<vector<Entity*>> draw_entities;
+
     int gridHeight;
     int gridWidth;
     vector<Vector2i> path;

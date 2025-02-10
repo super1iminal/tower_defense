@@ -6,6 +6,7 @@
 #include "GameTile.h"
 #include "PathTile.h"
 #include "TreeTile.h"
+#include "Entity.h"
 #include "Monster.h"
 #include "Game.h"
 #include "GameText.h"

@@ -13,7 +13,7 @@ const string TREE_TILE = "images/trees1.png";
 class TreeTile : public GameTile {
 public:
     bool isPassable;
-    TreeTile(float x,float y);
+    TreeTile(Vector2f pos);
 };
 
 #endif

@@ -2,6 +2,6 @@
 using namespace sf;
 using namespace std;
 
-TreeTile::TreeTile(float x, float y)
-    :  GameTile(TREE_TILE, x, y) {}
+TreeTile::TreeTile(Vector2f pos)
+    :  GameTile(TREE_TILE, pos) {}
 
